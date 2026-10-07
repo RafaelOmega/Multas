@@ -5,14 +5,7 @@ extrai os dados de cada documento e gera um resumo por placa em Excel.
 
 ## Estrutura de pastas
 
-Multas/ 
-├── analise_multas.ipynb # Notebook principal 
-├── resumo_multas.xlsx # Saída gerada (não versionado) 
-├── Placas/ 
-    └── / # Uma pasta por veículo (ex.: BSC4C89) 
-        └── A_Vencer/ # Notificações com prazo em aberto 
-        └── Pagas/ # Multas quitadas 
-        └── Vencidas/ # Prazos expirados
+Multas/ ├── analise_multas.ipynb # Notebook principal ├── requirements.txt # Dependências do sistema ├── requirements-dev.txt # Dependências para rodar o notebook ├── resumo_multas.xlsx # Saída gerada (não versionado) └── Placas/ └── / # Uma pasta por veículo (ex.: BSC4C89) ├── A_Vencer/ # Notificações com prazo em aberto ├── Pagas/ # Multas quitadas └── Vencidas/ # Prazos expirados
 
 
 ## Padrão de nome dos arquivos
@@ -45,10 +38,12 @@ fallback, e a placa/status são sempre confirmados pela estrutura de pastas.
 ## Requisitos
 
 - Python 3.11+
-- Dependências:
+
+Instale as dependências do sistema:
 
 ```bash
-pip install pandas pdfplumber openpyxl
+pip install -r requirements.
+
 Uso
 Coloque os PDFs em Placas/<PLACA>/<Status>/
 Execute as células do notebook em ordem (1 → 6)
