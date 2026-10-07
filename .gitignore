@@ -1,34 +1,16 @@
-# Ambiente virtual
-.venv/
-venv/
-env/
+# Sistema operacional
+Thumbs.db
+.DS_Store
 
-# Editor
-.vscode/
-.idea/
-
-# Empacotamento (PyInstaller)
-build/
-dist/
-*.spec
-
-# Logs da aplicação
-logs/
-*.log
+# Exportações geradas pelo notebook
+resumo_multas.xlsx
 
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
+*.pyc
+.ipynb_checkpoints/
 
-# Variáveis de ambiente / segredos
-.env
-.env.*
-
-# Banco de dados local (caso use SQLite em algum ambiente)
-*.sqlite3
-*.db
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
+# PyInstaller (para o futuro)
+build/
+dist/
+*.spec
