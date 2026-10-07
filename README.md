@@ -5,13 +5,24 @@ extrai os dados de cada documento e gera um resumo por placa em Excel.
 
 ## Estrutura de pastas
 
-Multas/ ├── analise_multas.ipynb # Notebook principal ├── requirements.txt # Dependências do sistema ├── requirements-dev.txt # Dependências para rodar o notebook ├── resumo_multas.xlsx # Saída gerada (não versionado) └── Placas/ └── / # Uma pasta por veículo (ex.: BSC4C89) ├── A_Vencer/ # Notificações com prazo em aberto ├── Pagas/ # Multas quitadas └── Vencidas/ # Prazos expirados
-
+```
+Multas/
+├── analise_multas.ipynb      # Notebook principal
+├── requirements.txt          # Dependências do sistema
+├── requirements-dev.txt      # Dependências para rodar o notebook
+├── resumo_multas.xlsx        # Saída gerada (não versionado)
+└── Placas/
+    └── <PLACA>/              # Uma pasta por veículo (ex.: BSC4C89)
+        ├── A_Vencer/         # Notificações com prazo em aberto
+        ├── Pagas/            # Multas quitadas
+        └── Vencidas/         # Prazos expirados
+```
 
 ## Padrão de nome dos arquivos
 
-notificacao{Tipo}{PLACA}{NUMERO}.pdf
-
+```
+notificacao{Tipo}_{PLACA}_{NUMERO}.pdf
+```
 
 - **Tipo**: `Autuacao` ou `Penalidade`
 - **NUMERO**: código do órgão + AIT + código da infração
@@ -42,9 +53,26 @@ fallback, e a placa/status são sempre confirmados pela estrutura de pastas.
 Instale as dependências do sistema:
 
 ```bash
-pip install -r requirements.
+pip install -r requirements.txt
+```
 
-Uso
-Coloque os PDFs em Placas/<PLACA>/<Status>/
-Execute as células do notebook em ordem (1 → 6)
-O resultado fica em resumo_multas.xlsx (abas "Detalhado" e "Resumo por Placa")
+Para executar o notebook localmente (Jupyter/VS Code), adicione o stack de desenvolvimento:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+## Uso
+
+1. Coloque os PDFs em `Placas/<PLACA>/<Status>/`
+2. Execute as células do notebook em ordem (1 → 6)
+3. O resultado fica em `resumo_multas.xlsx` (abas "Detalhado" e "Resumo por Placa")
+
+## Empacotamento (futuro)
+
+O código é compatível com PyInstaller — os caminhos funcionam em script,
+notebook e executável:
+
+```bash
+pyinstaller --onefile analise_multas.py --collect-all pdfplumber --collect-all pandas --collect-all openpyxl
+```
